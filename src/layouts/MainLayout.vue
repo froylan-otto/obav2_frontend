@@ -1,31 +1,38 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="lhh LpR lfr">
+    <q-header class="bg-primary text-white" height-hint="98">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title align="center">
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
+          </q-avatar>
+          OBA
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
+
+      <!-- <q-tabs align="center">
+        <q-route-tab to="/page1" label="Page One" />
+        <q-route-tab to="/page2" label="Page Two" />
+        <q-route-tab to="/page3" label="Page Three" />
+      </q-tabs> -->
+
+      <div class="q-pa-sm bg-secondary" align="center" unelevated>
+        <q-btn-group push unelevated>
+          <q-btn
+            color="primary "
+            text-color="white"
+            push
+            icon="home"
+            class="text-white"
+          />
+          <q-btn color="primary" text-color="white" push label="Dashboard" />
+          <q-btn color="primary" text-color="white" push label="User account" />
+          <q-btn color="primary" text-color="white" push label="Files" />
+          <q-btn color="primary" text-color="white" push label="FAQ Site" />
+          <q-btn color="primary" text-color="white" push label="Settings" />
+        </q-btn-group>
+      </div>
     </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-
-    </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -34,21 +41,18 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { ref } from "vue";
 
-
-export default defineComponent({
-  name: 'MainLayout',
-
-  setup () {
-    const leftDrawerOpen = ref(false)
+export default {
+  setup() {
+    const rightDrawerOpen = ref(false);
 
     return {
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+      rightDrawerOpen,
+      toggleRightDrawer() {
+        rightDrawerOpen.value = !rightDrawerOpen.value;
+      },
+    };
+  },
+};
 </script>
